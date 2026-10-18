@@ -153,35 +153,46 @@ export default function Guestbook({
         <p className="text-center font-mono text-sm text-[#ff6ec7] mb-3 animate-pulse">{greeting}</p>
       )}
 
-      {/* Entries */}
-      <div className="space-y-3 max-h-96 overflow-y-auto pr-2">
+      {/* Entries — old-school <table> layout, exactly like a 1996 guestbook */}
+      <div className="max-h-96 overflow-y-auto pr-2">
         {entries.length === 0 && (
           <p className="text-center text-gray-400 font-mono italic">
             No messages yet... be the first! 🌟
           </p>
         )}
-        {entries.map((entry) => (
-          <div key={entry.id} className="guestbook-entry">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-xl">{entry.emoji}</span>
-              <span
-                className="text-[#ff6ec7] font-bold"
-                style={{ fontFamily: "'Comic Neue', cursive" }}
-              >
-                {entry.name}
-              </span>
-              <span className="text-xs text-gray-500 ml-auto font-mono">
-                {new Date(entry.timestamp).toLocaleDateString()}
-              </span>
-            </div>
-            <p
-              className="text-[#00ffff] text-sm"
-              style={{ fontFamily: "'VT323', monospace", fontSize: "1.1rem" }}
-            >
-              {entry.message}
-            </p>
-          </div>
-        ))}
+        {entries.length > 0 && (
+          <table className="w-full border-collapse font-mono text-sm">
+            <caption className="sr-only">Dream journal entries</caption>
+            <tbody>
+              {entries.map((entry) => (
+                <tr key={entry.id} className="guestbook-row align-top">
+                  <td className="p-2 text-2xl text-center w-14 border-2 border-dashed border-[#00ffff]/50 bg-[#00ffff]/5">
+                    <span aria-hidden="true">{entry.emoji}</span>
+                  </td>
+                  <td className="p-2 border-2 border-dashed border-[#00ffff]/50 bg-[#00ffff]/5">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span
+                        className="text-[#ff6ec7] font-bold"
+                        style={{ fontFamily: "'Comic Neue', cursive" }}
+                      >
+                        {entry.name}
+                      </span>
+                      <span className="text-xs text-gray-500 ml-auto">
+                        {new Date(entry.timestamp).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <p
+                      className="text-[#00ffff]"
+                      style={{ fontFamily: "'VT323', monospace", fontSize: "1.1rem" }}
+                    >
+                      {entry.message}
+                    </p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

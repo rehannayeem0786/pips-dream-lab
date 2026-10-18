@@ -32,6 +32,7 @@ export default function VisitorCounter() {
             style={{
               textShadow: "0 0 5px #39ff14",
               fontFamily: "'VT323', monospace",
+              animation: `digit-roll 0.7s ease-out ${i * 0.09}s both`,
             }}
           >
             {d}

@@ -199,3 +199,77 @@ body {
 }
 .btn-cute:hover { transform: translateY(-2px) scale(1.04); }
 .btn-cute:active { transform: translateY(2px) scale(0.96); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55); }
+
+/* —— Pip life: blink, wave, moon bob, retro blink tag —— */
+@keyframes pip-blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.06); }
+  97% { transform: scaleY(1); }
+}
+.pip-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pip-blink 4.6s ease-in-out infinite;
+}
+@keyframes pip-wave {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(-16deg); }
+}
+.pip-wave {
+  transform-box: fill-box;
+  transform-origin: 15% 85%;
+  animation: pip-wave 1.8s ease-in-out infinite;
+}
+.pip-moon { animation: pip-float 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .pip-eyes, .pip-wave, .pip-moon { animation: none; }
+}
+
+/* —— odometer digits roll in (early-web soul) —— */
+@keyframes digit-roll {
+  from { transform: translateY(-120%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* —— guestbook table rows —— */
+.guestbook-row td { transition: background 0.3s; }
+.guestbook-row:hover td { background: rgba(0, 255, 255, 0.12); }
+
+/* —— RESPONSIVE CHAOS MODE (side quest +5): the layout mutates per breakpoint —— */
+@media (max-width: 640px) {
+  html { font-size: 14px; }
+  .marquee-content { animation-duration: 9s; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  html { font-size: 15px; }
+  .marquee-content { animation-duration: 14s; }
+}
+@media (min-width: 1025px) {
+  .marquee-content { animation-duration: 22s; }
+}
+@media (min-width: 1600px) {
+  html { font-size: 18px; }
+  .marquee-content { animation-duration: 26s; }
+}
+/* landscape phones: the crib goes sideways — hero splits into two columns */
+@media (orientation: landscape) and (max-height: 560px) {
+  #home {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    min-height: auto;
+    padding-top: 4.5rem;
+  }
+  #home > div:first-child { width: 54%; max-width: 54%; order: 1; }
+  #home > div[role="button"] { width: 44%; max-width: 44%; order: 2; }
+  #home > h1, #home > p { width: 100%; max-width: 100%; order: 3; }
+  #home > div.inline-flex { width: 100%; order: 4; }
+  #home > div:last-child { width: 100%; order: 5; }
+  .marquee-content { animation-duration: 7s; }
+}
+/* chunky >=44px touch targets on touch devices */
+@media (pointer: coarse) {
+  button, [role="button"] { min-height: 44px; min-width: 44px; }
+}

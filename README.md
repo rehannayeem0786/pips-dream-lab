@@ -27,6 +27,11 @@ Every great portfolio starts with a hello. The brief asked for a character portf
 - 🎮 **Konami code** (↑↑↓↓←→←→BA) → unlocks Pip's secret lullaby
 - 🧠 **Knowledge graph** of this site's own component tree (Graphify-inspired)
 - 🕸️ Retro nav chrome, GeoCities profile table, marquee, webring, glitchy 404
+- 🌀 **Responsive Chaos Mode** — layout mutates per breakpoint (mobile nursery / tablet playpen / desktop dreamscape / landscape crib), turbo marquee on small screens, ≥44px touch targets, live chaos badge
+- 📳 **Shake-to-rattle** — `devicemotion` easter egg: shake your phone and Pip's rattle synthesizes live
+- 🧾 **Side Quest Log** — on-page panel proving all 5 official bonus quests (+13) so judges never miss them
+- 🛡️ **ErrorBoundary + Pip-flavored 404** — zero-console-error guarantee
+- 🗺️ **SEO/meta pack** — `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, build-generated 1200×630 Open Graph image
 
 ## 🎯 Judging rubric alignment
 
@@ -46,6 +51,13 @@ Every great portfolio starts with a hello. The brief asked for a character portf
 - **Audio:** Web Audio API — all SFX & music synthesized at runtime (no assets)
 - **Persistence:** file-based JSON → optional Upstash REST → browser localStorage fallback (`src/lib/store.ts`)
 - **Art:** official free Pip asset pack (hax.baby) + hand-written SVG/CSS
+
+## 🧠 Architecture in 30 seconds
+
+- **3-tier store** (`src/lib/store.ts`): file-based JSON → optional Upstash REST → localStorage fallback, so the guestbook never fails on any host.
+- **Zero-asset audio** (`SoundManager.tsx`): every SFX, giggle and lullaby is a live Web Audio oscillator graph — no audio files shipped.
+- **Chaos layer** (`ChaosMode.tsx` + breakpoint CSS in `globals.css`): the layout intentionally mutates per breakpoint/orientation for the Responsive Chaos Mode side quest.
+- **Character layer**: hand-written SVG (`PipFace`, `PipFull`) with blink/wave keyframes + the official haX.baby asset pack PNGs.
 
 ## 🚀 Run it
 

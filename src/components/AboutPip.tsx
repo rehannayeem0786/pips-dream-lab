@@ -4,7 +4,7 @@ import Link from "next/link";
 const PROFILE: [string, string][] = [
   ["Name", "Pip"],
   ["Age", "a baby (ageless, timeless, always sleepy)"],
-  ["Face", "smooth round skull · huge cozy eye sockets with glowing pinpricks · tiny crooked smile"],
+  ["Face", "smooth round skull · huge sparkly amber eyes · rosy blush cheeks · tiny happy smile"],
   ["Outfit", "bedtime nightcap with stars + a little pink bow"],
   ["Job", "Junior Dream Engineer at the Midnight Nursery"],
   ["Hates", "silence (so this site is never quiet 🔊)"],

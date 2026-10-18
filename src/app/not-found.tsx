@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import PipFace from "@/components/PipFace";
 
 export default function NotFound() {
   const [glitchText, setGlitchText] = useState("404");
@@ -26,6 +27,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#0d0d2b] px-4">
       <div className="text-center">
+        <PipFace className="w-20 h-20 mx-auto mb-4" />
         <h1
           className="text-6xl md:text-8xl mb-4 text-[#ff6ec7]"
           style={{ fontFamily: "'Press Start 2P', monospace" }}
@@ -45,7 +47,7 @@ export default function NotFound() {
         <div className="construction-bar rounded mb-8"></div>
         <Link
           href="/"
-          className="inline-block px-6 py-3 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors"
+          className="btn-cute inline-block px-6 py-3 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors"
         >
           ← GO BACK HOME
         </Link>

@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import StarField from "@/components/StarField";
 import CuteAmbient from "@/components/CuteAmbient";
-import PipFace from "@/components/PipFace";
+import PipFull from "@/components/PipFull";
 import SparkleCursor from "@/components/SparkleCursor";
 import RetroNav from "@/components/RetroNav";
 import KonamiCode from "@/components/KonamiCode";
@@ -17,6 +17,10 @@ import GraphifySection from "@/components/GraphifySection";
 import Guestbook from "@/components/Guestbook";
 import WebRing from "@/components/WebRing";
 import Credits from "@/components/Credits";
+import QuestLog from "@/components/QuestLog";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import ChaosMode from "@/components/ChaosMode";
+import ShakeRattle from "@/components/ShakeRattle";
 import { SoundProvider, useSound, MuteButton } from "@/components/SoundManager";
 
 function HomeInner() {
@@ -36,12 +40,14 @@ function HomeInner() {
       <SparkleCursor />
       <RetroNav />
       <MuteButton />
+      <ChaosMode />
+      <ShakeRattle />
       <KonamiCode onActivate={handleKonami} />
 
       {showEasterEgg && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 px-4">
           <div className="text-center p-8 pixel-border bg-black max-w-md w-full">
-            <PipFace className="w-14 h-14 mx-auto mb-3" />
+            <PipFull className="w-36 h-auto mx-auto mb-3" />
             <h2
               className="mb-3 rainbow-text"
               style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.75rem" }}
@@ -108,6 +114,13 @@ function HomeInner() {
         </section>
       </ScrollReveal>
 
+      {/* SIDE QUEST LOG — visible proof of all 5 official bonus quests (+13) */}
+      <ScrollReveal>
+        <section className="relative z-10 py-8 px-4">
+          <QuestLog />
+        </section>
+      </ScrollReveal>
+
       {/* CREDITS (required by the brief) */}
       <ScrollReveal>
         <Credits />
@@ -124,12 +137,15 @@ function HomeInner() {
       <footer className="relative z-10 py-8 px-4 border-t border-[#333]">
         <div className="max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-4">
-            <PipFace className="w-14 h-14" />
+            <PipFull className="w-40 h-auto" />
           </div>
           <div className="construction-bar rounded mb-4" aria-hidden="true" />
           <p className="font-mono text-xs text-[#ffff00] blink mb-4">
             🚧 THE NURSERY IS ALWAYS UNDER CONSTRUCTION 🚧
           </p>
+          <div className="inline-block border-2 border-[#39ff14] bg-black px-3 py-1 font-mono text-[10px] text-[#39ff14] mb-4">
+            🏆 BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 · 800×600 · 256 COLORS
+          </div>
 
           <div className="flex justify-center gap-4 flex-wrap mb-4 font-mono text-sm">
             <Link href="/story" className="text-[#ff6ec7] hover:text-[#00ffff] transition-colors underline">
@@ -189,7 +205,9 @@ function HomeInner() {
 export default function Home() {
   return (
     <SoundProvider>
-      <HomeInner />
+      <ErrorBoundary>
+        <HomeInner />
+      </ErrorBoundary>
     </SoundProvider>
   );
 }
