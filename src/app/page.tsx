@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import StarField from "@/components/StarField";
+import CuteAmbient from "@/components/CuteAmbient";
+import PipFace from "@/components/PipFace";
 import SparkleCursor from "@/components/SparkleCursor";
 import RetroNav from "@/components/RetroNav";
 import KonamiCode from "@/components/KonamiCode";
@@ -30,6 +32,7 @@ function HomeInner() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <StarField />
+      <CuteAmbient />
       <SparkleCursor />
       <RetroNav />
       <MuteButton />
@@ -38,13 +41,16 @@ function HomeInner() {
       {showEasterEgg && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 px-4">
           <div className="text-center p-8 pixel-border bg-black max-w-md w-full">
-            <p className="text-4xl mb-4">🎵👶🎵</p>
+            <PipFace className="w-14 h-14 mx-auto mb-3" />
             <h2
-              className="mb-4 rainbow-text"
+              className="mb-3 rainbow-text"
               style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.75rem" }}
             >
               SECRET LULLABY UNLOCKED!
             </h2>
+            <p className="font-mono text-sm mb-3" style={{ color: "#ffd700" }}>
+              (´｡• ᵕ •｡`) ♪ ♪ ♪
+            </p>
             <p className="text-[#39ff14] font-mono mb-2 text-sm">
               You found Pip&apos;s dream code (↑↑↓↓←→←→BA).
             </p>
@@ -53,9 +59,9 @@ function HomeInner() {
             </p>
             <button
               onClick={() => setShowEasterEgg(false)}
-              className="px-6 py-2 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors cursor-pointer"
+              className="btn-cute px-6 py-2 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors cursor-pointer"
             >
-              CLOSE
+              CLOSE ✿
             </button>
           </div>
         </div>
@@ -117,6 +123,9 @@ function HomeInner() {
       {/* FOOTER */}
       <footer className="relative z-10 py-8 px-4 border-t border-[#333]">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="flex justify-center mb-4">
+            <PipFace className="w-14 h-14" />
+          </div>
           <div className="construction-bar rounded mb-4" aria-hidden="true" />
           <p className="font-mono text-xs text-[#ffff00] blink mb-4">
             🚧 THE NURSERY IS ALWAYS UNDER CONSTRUCTION 🚧

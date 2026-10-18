@@ -193,7 +193,7 @@ export default function DreamGame() {
             </p>
             <button
               onClick={start}
-              className="px-5 py-3 bg-[#39ff14] text-black font-bold hover:bg-[#00ffff] transition-colors cursor-pointer"
+              className="btn-cute px-5 py-3 bg-[#39ff14] text-black font-bold hover:bg-[#00ffff] transition-colors cursor-pointer"
               style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.65rem" }}
             >
               {status === "idle" ? "▶ START DELIVERY" : "↻ AGAIN"}

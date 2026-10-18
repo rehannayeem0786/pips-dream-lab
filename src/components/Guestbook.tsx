@@ -142,10 +142,10 @@ export default function Guestbook({
         <button
           type="submit"
           disabled={submitting}
-          className="w-full py-3 bg-gradient-to-r from-[#ff6ec7] to-[#9b59b6] text-black font-bold uppercase tracking-wider hover:from-[#00ffff] hover:to-[#39ff14] transition-all duration-300 disabled:opacity-50 cursor-pointer"
+          className="btn-cute w-full py-3 bg-gradient-to-r from-[#ff6ec7] to-[#9b59b6] text-black font-bold uppercase tracking-wider hover:from-[#00ffff] hover:to-[#39ff14] transition-all duration-300 disabled:opacity-50 cursor-pointer"
           style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.7rem" }}
         >
-          {submitting ? "WRITING..." : "📝 SIGN IT!"}
+          {submitting ? "WRITING..." : "💌 SEND IT TO PIP!"}
         </button>
       </form>
 

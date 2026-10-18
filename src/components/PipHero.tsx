@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import VisitorCounter from "@/components/VisitorCounter";
+import PipFace from "@/components/PipFace";
 import { useSound } from "@/components/SoundManager";
 
 const BOOT_TEXT = "HELLO WORLD. I AM PIP. JUNIOR DREAM ENGINEER. NICE TO MEET YOU.";
@@ -37,7 +38,8 @@ export default function PipHero() {
           <span className="w-3 h-3 rounded-full bg-red-500"></span>
           <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
           <span className="w-3 h-3 rounded-full bg-green-500"></span>
-          <span className="ml-2 text-gray-400 font-mono text-xs">pip@midnight-nursery:~$</span>
+          <PipFace className="ml-1 w-4 h-4 shrink-0" />
+          <span className="text-gray-400 font-mono text-xs">pip@midnight-nursery:~$</span>
         </div>
         <div className="bg-black/95 border border-t-0 border-[#39ff14] rounded-b-lg p-4 min-h-[110px]">
           <p className="text-[#39ff14] font-mono text-sm leading-relaxed break-words">
@@ -97,7 +99,7 @@ export default function PipHero() {
       </div>
 
       <p className={`mt-3 mb-4 font-mono text-xs md:text-sm text-[#ffff00] ${awake ? "" : "blink"}`}>
-        {awake ? "👆 click again — Pip hates silence!" : "👆 psst… click Pip to wake him"}
+        {awake ? "👆 boop him again — Pip hates silence! (≧▽≦)" : "👆 psst… boop Pip to wake him (he's smol — be gentle!)"}
       </p>
 
       <VisitorCounter />

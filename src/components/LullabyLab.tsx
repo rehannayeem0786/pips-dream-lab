@@ -37,14 +37,14 @@ export default function LullabyLab() {
             <button
               onClick={toggleLullaby}
               aria-pressed={lullabyOn}
-              className="px-5 py-3 bg-[#ff6ec7] text-black font-bold hover:bg-[#00ffff] transition-colors cursor-pointer"
+              className="btn-cute px-5 py-3 bg-[#ff6ec7] text-black font-bold hover:bg-[#00ffff] transition-colors cursor-pointer"
               style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.65rem" }}
             >
               {lullabyOn ? "⏹ STOP BOX" : "🎵 WIND THE BOX"}
             </button>
             <button
               onClick={playRattle}
-              className="px-5 py-3 border-2 border-[#ffff00] text-[#ffff00] font-bold hover:bg-[#ffff00] hover:text-black transition-colors cursor-pointer"
+              className="btn-cute px-5 py-3 border-2 border-[#ffff00] text-[#ffff00] font-bold hover:bg-[#ffff00] hover:text-black transition-colors cursor-pointer"
               style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.65rem" }}
             >
               🪇 SHAKE RATTLE

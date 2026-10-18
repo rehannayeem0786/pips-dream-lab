@@ -111,7 +111,7 @@ export default function StoryPage() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="inline-block px-6 py-3 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors"
+            className="btn-cute inline-block px-6 py-3 bg-[#ff6ec7] text-black font-bold font-mono hover:bg-[#00ffff] transition-colors"
             style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "0.7rem" }}
           >
             ← GO VISIT PIP
