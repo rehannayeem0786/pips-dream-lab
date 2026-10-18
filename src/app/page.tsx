@@ -6,6 +6,10 @@ import VisitorCounter from "@/components/VisitorCounter";
 import Guestbook from "@/components/Guestbook";
 import GraphifySection from "@/components/GraphifySection";
 import KonamiCode from "@/components/KonamiCode";
+import SparkleCursor from "@/components/SparkleCursor";
+import RetroNav from "@/components/RetroNav";
+import ScrollReveal from "@/components/ScrollReveal";
+import WebRing from "@/components/WebRing";
 import { useSound, MuteButton } from "@/components/SoundManager";
 
 export default function Home() {
@@ -28,13 +32,15 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => playDialUp(), 500);
     return () => clearTimeout(timer);
-  }, []);
+  }, [playDialUp]);
 
   const handleKonami = useCallback(() => { setShowEasterEgg(true); playSuccess(); }, [playSuccess]);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <StarField />
+      <SparkleCursor />
+      <RetroNav />
       <MuteButton muted={muted} onToggle={toggleMute} />
       <KonamiCode onActivate={handleKonami} />
       {showEasterEgg && (
@@ -97,7 +103,8 @@ export default function Home() {
       </div>
 
       {/* ERA 1: 1995 GeoCities */}
-      <section id="era-1995" className="relative z-10 py-16 px-4 era-section">
+      <ScrollReveal>
+      <section id="era-1995" className="relative z-10 py-16 px-4 era-section pt-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center mb-8 rainbow-text" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(0.7rem, 2vw, 1rem)" }}>
             📼 ERA 1: 1995 — THE GEOCITIES ERA
@@ -136,9 +143,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ERA 2: 2005 MySpace */}
-      <section className="relative z-10 py-16 px-4 era-section bg-gradient-to-b from-transparent via-[#1a0033]/30 to-transparent">
+      <ScrollReveal delay={100}>
+      <section id="era-2005" className="relative z-10 py-16 px-4 era-section bg-gradient-to-b from-transparent via-[#1a0033]/30 to-transparent">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center mb-8 neon-glow-cyan" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(0.7rem, 2vw, 1rem)", color: "#00ffff" }}>
             💿 ERA 2: 2005 — THE MYSPACE ERA
@@ -173,9 +182,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ERA 3: 2012 Web 2.0 */}
-      <section className="relative z-10 py-16 px-4 era-section">
+      <ScrollReveal delay={100}>
+      <section id="era-2012" className="relative z-10 py-16 px-4 era-section">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center mb-8 neon-glow-green" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(0.7rem, 2vw, 1rem)", color: "#39ff14" }}>
             📱 ERA 3: 2012 — THE WEB 2.0 ERA
@@ -197,9 +208,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ERA 4: 2026 NOW */}
-      <section className="relative z-10 py-16 px-4 era-section">
+      <ScrollReveal delay={100}>
+      <section id="era-2026" className="relative z-10 py-16 px-4 era-section">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-8 neon-glow-pink" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(0.7rem, 2vw, 1rem)", color: "#ff6ec7" }}>
             🚀 ERA 4: 2026 — RIGHT NOW
@@ -222,18 +235,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* GRAPHIFY + GUESTBOOK + FOOTER */}
+      <ScrollReveal>
       <section className="relative z-10 py-16 px-4">
         <div className="max-w-4xl mx-auto"><GraphifySection /></div>
       </section>
 
+      </ScrollReveal>
+
+      <ScrollReveal>
       <section className="relative z-10 py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center mb-8 text-[#ffff00]" style={{ fontFamily: "'Press Start 2P', monospace", fontSize: "clamp(0.7rem, 2vw, 1rem)" }}>
             📖 THE GUESTBOOK
           </h2>
           <Guestbook onSuccess={playSuccess} />
+        </div>
+      </section>
+      </ScrollReveal>
+
+      {/* WEB RING */}
+      <section className="relative z-10 py-8 px-4">
+        <div className="max-w-4xl mx-auto">
+          <WebRing />
         </div>
       </section>
 
@@ -246,12 +272,15 @@ export default function Home() {
             Baby&apos;s First Website Hackathon
           </p>
           <p className="font-mono text-xs text-gray-600 mb-4">Oct 17-19, 2026 | 48 hours of pure nostalgia</p>
-          <div className="flex justify-center gap-4 text-xs font-mono text-gray-500">
+          <div className="flex justify-center gap-4 text-xs font-mono text-gray-500 flex-wrap">
             <span>🏗️ Built during the hackathon</span><span>•</span><span>📱 Mobile friendly</span><span>•</span><span>🔊 Sound enabled</span>
           </div>
           <div className="mt-4 text-xs font-mono text-gray-600">
             <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener noreferrer" className="text-[#9b59b6] hover:text-[#00ffff] transition-colors">Knowledge graph powered by Graphify</a>
           </div>
+          <p className="mt-4 text-[10px] font-mono text-gray-700">
+            Made with Notepad.exe, 3 cans of Red Bull, and pure 90s nostalgia. No AI was harmed in the making of this website. (Okay, some AI helped. But Baby was the architect.)
+          </p>
         </div>
       </footer>
     </div>

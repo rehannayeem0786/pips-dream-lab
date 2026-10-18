@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
-
-const SOUNDS: Record<string, () => void> = {};
+import { useState, useCallback, useRef } from "react";
 
 export function useSound() {
   const [muted, setMuted] = useState(false);
