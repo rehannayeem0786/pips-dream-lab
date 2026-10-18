@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍼 Baby's First Website
 
-## Getting Started
+**haX.baby Baby's First Website Hackathon** | Oct 17-19, 2026
 
-First, run the development server:
+A nostalgic journey through every era of the internet — from GeoCities to 2026. Watch a website grow up, one scroll at a time.
+
+## ✨ Features
+
+- **Terminal Boot Sequence** — Watch the website "come alive" with a typing animation
+- **4 Internet Eras** — GeoCities (1995), MySpace (2005), Web 2.0 (2012), and Now (2026)
+- **Interactive Guestbook** — Sign it, read it, relive the 90s
+- **Visitor Counter** — Classic hit counter, server-side incremented
+- **Knowledge Graph** — This codebase visualized using [Graphify](https://github.com/Graphify-Labs/graphify)
+- **Web Audio Sound Effects** — Dial-up modem, clicks, success chimes (with mute button!)
+- **Konami Code Easter Egg** — ↑↑↓↓←→←→BA
+- **Star Field Canvas** — Animated twinkling stars background
+- **Marquee & Under Construction** — Because it's 1995 and we're proud
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4 + custom CSS animations
+- **Fonts:** Press Start 2P, VT323, Comic Neue, Space Grotesk
+- **Audio:** Web Audio API (no external dependencies)
+- **Storage:** File-based JSON (guestbook + visitor count)
+- **Visualization:** SVG-based knowledge graph (Graphify-inspired)
+
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── guestbook/route.ts   # GET/POST guestbook entries
+│   │   └── visitors/route.ts    # GET visitor count (increments)
+│   ├── globals.css              # Retro theme + animations
+│   ├── layout.tsx               # Root layout + metadata
+│   └── page.tsx                 # Main page (all 4 eras)
+├── components/
+│   ├── StarField.tsx            # Animated star canvas
+│   ├── SoundManager.tsx         # Web Audio hook + mute button
+│   ├── VisitorCounter.tsx       # Classic hit counter
+│   ├── Guestbook.tsx            # Interactive guestbook
+│   ├── KonamiCode.tsx           # Secret code listener
+│   └── GraphifySection.tsx      # Knowledge graph visualization
+data/
+├── guestbook.json               # Guestbook entries storage
+└── visitors.json                # Visitor count storage
+```
 
-## Learn More
+## 🎯 Hackathon Alignment
 
-To learn more about Next.js, take a look at the following resources:
+| Criteria | How We Deliver |
+|----------|---------------|
+| Early-web spirit | GeoCities table layout, marquee, under construction, hit counter |
+| Mobile responsive | All sections responsive with Tailwind breakpoints |
+| Sound effects (+3 bonus) | Web Audio API with easy-to-spot mute control |
+| Working website | Live deploy ready (Vercel-compatible) |
+| Public GitHub repo | Clean commit history during Oct 17-19 |
+| Creativity | 4-era narrative, Konami code, knowledge graph |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — Built with 💖 for the haX.baby community
