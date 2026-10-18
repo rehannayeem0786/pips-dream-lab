@@ -39,7 +39,7 @@ export default function VisitorCounter() {
         ))}
       </div>
       <span className="text-[10px] text-gray-400 uppercase tracking-widest">
-        visitors since 1996
+        dreams delivered · since 1996
       </span>
     </div>
   );

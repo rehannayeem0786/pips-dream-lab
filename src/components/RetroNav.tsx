@@ -3,10 +3,11 @@
 import { useState } from "react";
 
 const ERAS = [
-  { id: "era-1995", label: "1995", icon: "📼" },
-  { id: "era-2005", label: "2005", icon: "💿" },
-  { id: "era-2012", label: "2012", icon: "📱" },
-  { id: "era-2026", label: "2026", icon: "🚀" },
+  { id: "home", label: "HOME", icon: "🍼" },
+  { id: "about", label: "ABOUT", icon: "👤" },
+  { id: "work", label: "WORK", icon: "🌙" },
+  { id: "story", label: "STORY", icon: "📖" },
+  { id: "journal", label: "JOURNAL", icon: "📝" },
 ];
 
 export default function RetroNav() {

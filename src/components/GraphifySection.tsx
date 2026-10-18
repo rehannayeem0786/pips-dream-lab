@@ -59,7 +59,7 @@ export default function GraphifySection() {
     <div className="w-full">
       <div className="text-center mb-6">
         <h3 className="text-lg mb-2" style={{ fontFamily: "'Press Start 2P', monospace", color: "#00ffff", fontSize: "0.9rem" }}>
-          🔍 KNOWLEDGE GRAPH
+          🧠 PIP&apos;S BRAIN MAP
         </h3>
         <p className="text-gray-400 font-mono text-sm">
           Powered by{" "}

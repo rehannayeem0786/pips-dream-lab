@@ -18,6 +18,7 @@ export default function Guestbook({
   onSuccess?: () => void;
 }) {
   const [entries, setEntries] = useState<Entry[]>([]);
+  const [greeting, setGreeting] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [emoji, setEmoji] = useState("👶");
@@ -25,10 +26,22 @@ export default function Guestbook({
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let cached: Entry[] = [];
+    try {
+      cached = JSON.parse(localStorage.getItem("pip-journal-local") || "[]") as Entry[];
+    } catch { /* ignore */ }
     fetch("/api/guestbook")
       .then((r) => r.json())
-      .then(setEntries)
-      .catch(() => {});
+      .then((data) => {
+        const server = Array.isArray(data) ? (data as Entry[]) : [];
+        const ids = new Set(server.map((e) => e.id));
+        setEntries([...cached.filter((e) => !ids.has(e.id)), ...server]);
+      })
+      .catch(() => setEntries(cached));
+    try {
+      const fan = localStorage.getItem("pip-fan");
+      if (fan) setGreeting(`Welcome back, ${fan}! Pip kept your spot warm ☕`);
+    } catch { /* ignore */ }
   }, []);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -46,6 +59,15 @@ export default function Guestbook({
       if (!res.ok) throw new Error("Failed");
       const entry = await res.json();
       setEntries((prev) => [entry, ...prev]);
+      try {
+        if (!entry.persisted) {
+          const cached = JSON.parse(localStorage.getItem("pip-journal-local") || "[]") as Entry[];
+          cached.unshift(entry);
+          localStorage.setItem("pip-journal-local", JSON.stringify(cached.slice(0, 50)));
+        }
+        localStorage.setItem("pip-fan", name.trim().slice(0, 30));
+      } catch { /* ignore */ }
+      setGreeting(`Thanks, ${name.trim().slice(0, 30)}! Pip giggles at your message ✨`);
       setName("");
       setMessage("");
       setEmoji("👶");
@@ -68,7 +90,7 @@ export default function Guestbook({
           className="text-xl mb-4 text-center"
           style={{ fontFamily: "'Press Start 2P', monospace", color: "#ffff00", fontSize: "0.8rem" }}
         >
-          ✍️ SIGN THE GUESTBOOK ✍️
+          ✍️ SIGN THE DREAM JOURNAL ✍️
         </h3>
 
         <div className="flex gap-2 mb-3 flex-wrap justify-center">
@@ -101,7 +123,7 @@ export default function Guestbook({
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="Leave a message for the baby... 💬"
+          placeholder="Leave a dream wish for Pip... 💤"
           maxLength={500}
           rows={3}
           className="w-full mb-3 px-4 py-2 bg-black border-2 border-[#00ffff] text-[#00ffff] placeholder-gray-500 font-mono focus:outline-none focus:border-[#ff6ec7] transition-colors resize-none"
@@ -121,6 +143,10 @@ export default function Guestbook({
           {submitting ? "WRITING..." : "📝 SIGN IT!"}
         </button>
       </form>
+
+      {greeting && (
+        <p className="text-center font-mono text-sm text-[#ff6ec7] mb-3 animate-pulse">{greeting}</p>
+      )}
 
       {/* Entries */}
       <div className="space-y-3 max-h-96 overflow-y-auto pr-2">
