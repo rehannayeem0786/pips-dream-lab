@@ -3,6 +3,8 @@
 **The portfolio of Pip — Junior Dream Engineer at the Midnight Nursery**
 haX.baby · Baby's First Website · **Track 1: Same Baby, 1,000 Websites** · Oct 17–19, 2026
 
+**Public repo:** https://github.com/rehannayeem0786/pips-dream-lab
+
 > _"I build the dreams you fall asleep inside."_
 
 Pip is a skull-faced baby in a starred nightcap who engineers the dreams, lullabies and nightlights that help the neighbourhood's little creatures fall asleep. This site is his portfolio, dressed head-to-toe in early-web soul — because Pip's favourite dream texture **is** the old web.
@@ -71,8 +73,12 @@ npm run lint     # eslint — must stay clean
 ### Deploy
 
 ```bash
-npx vercel --prod
+npx vercel login      # one-time, opens your browser
+npx vercel --prod     # permanent production URL
 ```
+
+No Vercel session during judging? `npx vercel deploy --temporary --yes` creates an instant
+claimable deployment — the CLI prints the live URL plus a claim link to keep it forever.
 
 For a guestbook shared across **all** visitors on read-only hosts, create a free [Upstash](https://upstash.com) Redis (REST) database and set `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` in your host's env. Without them, everything still works: entries persist per-browser via localStorage.
 
