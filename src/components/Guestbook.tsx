@@ -38,10 +38,15 @@ export default function Guestbook({
         setEntries([...cached.filter((e) => !ids.has(e.id)), ...server]);
       })
       .catch(() => setEntries(cached));
-    try {
-      const fan = localStorage.getItem("pip-fan");
-      if (fan) setGreeting(`Welcome back, ${fan}! Pip kept your spot warm ☕`);
-    } catch { /* ignore */ }
+    let cancelled = false;
+    const t = setTimeout(() => {
+      if (cancelled) return;
+      try {
+        const fan = localStorage.getItem("pip-fan");
+        if (fan) setGreeting(`Welcome back, ${fan}! Pip kept your spot warm ☕`);
+      } catch { /* ignore */ }
+    }, 0);
+    return () => { cancelled = true; clearTimeout(t); };
   }, []);
 
   const handleSubmit = async (e: FormEvent) => {

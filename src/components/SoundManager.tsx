@@ -26,13 +26,19 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const loopRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem(MUTE_KEY) === "1") { mutedRef.current = true; setMuted(true); }
-    } catch { /* ignore */ }
+    let cancelled = false;
+    const t = setTimeout(() => {
+      if (cancelled) return;
+      try {
+        if (localStorage.getItem(MUTE_KEY) === "1") { mutedRef.current = true; setMuted(true); }
+      } catch { /* ignore */ }
+    }, 0);
     const resume = () => { ctxRef.current?.resume().catch(() => {}); };
     window.addEventListener("pointerdown", resume);
     window.addEventListener("keydown", resume);
     return () => {
+      cancelled = true;
+      clearTimeout(t);
       window.removeEventListener("pointerdown", resume);
       window.removeEventListener("keydown", resume);
       if (loopRef.current) clearInterval(loopRef.current);

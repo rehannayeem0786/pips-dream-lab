@@ -48,7 +48,12 @@ export default function DreamGame() {
   const missesRef = useRef(0);
 
   useEffect(() => {
-    try { setBest(parseInt(localStorage.getItem("pip-best") || "0", 10) || 0); } catch { /* ignore */ }
+    let cancelled = false;
+    const t = setTimeout(() => {
+      if (cancelled) return;
+      try { setBest(parseInt(localStorage.getItem("pip-best") || "0", 10) || 0); } catch { /* ignore */ }
+    }, 0);
+    return () => { cancelled = true; clearTimeout(t); };
   }, []);
 
   useEffect(() => {
