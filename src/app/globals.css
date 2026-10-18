@@ -1,3 +1,4 @@
+/* Baby's First Website — global styles | Tailwind v4 entry point (theme tokens live in :root) */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Comic+Neue:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
